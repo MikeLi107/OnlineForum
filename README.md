@@ -56,27 +56,6 @@
 
 ---
 
-## 📂 项目结构 (Structure)
-
-```text
-src/main/java/com/example/forum
-├── config           // Web 配置 (拦截器注册)
-├── controller       // 控制层 (处理 URL 请求)
-│   ├── ForumController.java
-│   └── LoginController.java
-├── interceptor      // 拦截器 (登录检查)
-├── model            // 实体类 (User, Message)
-├── service          // 业务逻辑层 (模拟数据库数据)
-└── ForumApplication.java // 启动类
-
-src/main/resources
-├── static/css       // 静态资源 (样式表)
-└── templates        // Thymeleaf 页面 (HTML)
-    ├── login.html
-    ├── list.html
-    ├── detail.html
-    └── post.html
-
 ## 🚀 快速开始 (Getting Started)
 
 ### 前置要求
@@ -116,16 +95,7 @@ src/main/resources
 | admin | 123 | 管理员/测试用户 |
 | student | 123 | 普通用户 |
 
-## 📸 运行截图 (Screenshots)
-
-
-| 登录页 (Login) | 话题列表 (List) |
-| :--- | :--- |
-| ![alt text](https://via.placeholder.com/400x300?text=Login+Page) | ![alt text](https://via.placeholder.com/400x300?text=Forum+List) |
-
-| 详情与回复 (Detail) | 发布话题 (Post) |
-| :--- | :--- |
-| ![alt text](https://via.placeholder.com/400x300?text=Detail+Page) | ![alt text](https://via.placeholder.com/400x300?text=New+Post) |
+---
 
 ## 📝 学习笔记 (Refactoring Notes)
 
@@ -135,6 +105,27 @@ src/main/resources
 2.  **View 层升级**：从 .jsp 迁移至 .html (Thymeleaf)，实现前后端解耦和 Jar 包部署。
 3.  **数据管理**：使用 Spring 的单例 Bean (DataService) 替代 ServletContext 全局域对象。
 
-## 📄 License
+---
 
-MIT License
+---
+
+## 📂 项目结构 (Structure)
+
+```text
+src/main/java/com/example/forum
+├── config           // Web 配置 (拦截器注册)
+├── controller       // 控制层 (处理 URL 请求)
+│   ├── ForumController.java
+│   └── LoginController.java
+├── interceptor      // 拦截器 (登录检查)
+├── model            // 实体类 (User, Message)
+├── service          // 业务逻辑层 (模拟数据库数据)
+└── ForumApplication.java // 启动类
+
+src/main/resources
+├── static/css       // 静态资源 (样式表)
+└── templates        // Thymeleaf 页面 (HTML)
+    ├── login.html
+    ├── list.html
+    ├── detail.html
+    └── post.html
