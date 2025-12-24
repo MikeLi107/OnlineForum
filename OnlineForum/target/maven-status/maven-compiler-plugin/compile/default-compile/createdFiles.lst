@@ -1,0 +1,8 @@
+com\Interceptor\LoginInterceptor.class
+com\ForumApplication.class
+com\Config\WebConfig.class
+com\Service\DataService.class
+com\Controller\ForumController.class
+com\Model\Message.class
+com\Model\User.class
+com\Controller\LoginController.class

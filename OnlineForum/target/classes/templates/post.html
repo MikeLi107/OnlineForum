@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发布新话题</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <h2>发布新话题</h2>
+    <form th:action="@{/forum/post}" method="post">
+        <label>标题</label>
+        <input type="text" name="title" required placeholder="请输入引人注目的标题...">
+
+        <label>正文内容</label>
+        <textarea name="content" rows="10" required placeholder="请详细描述您的问题或观点..."></textarea>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <input type="submit" value="立即发布" style="flex: 1;">
+            <a th:href="@{/forum/list}" class="btn" style="flex: 1; background-color: #95a5a6; text-align: center; box-sizing: border-box;">取消</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

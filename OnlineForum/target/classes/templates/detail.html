@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${mainMsg.title}">话题详情</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <a th:href="@{/forum/list}">&laquo; 返回列表</a>
+
+    <!-- 主贴 -->
+    <div class="message-card" style="margin-top: 20px;">
+        <h2 style="text-align: left; margin-top: 0;" th:text="${mainMsg.title}">标题</h2>
+        <div class="meta-info">
+            楼主: <b th:text="${mainMsg.sender.username}">作者</b> | 时间: <span th:text="${mainMsg.datetime}">时间</span>
+        </div>
+        <!-- th:text 会自动转义 HTML（安全），配合 CSS pre-wrap 实现换行 -->
+        <div style="white-space: pre-wrap; line-height: 1.6; margin-top: 15px;" th:text="${mainMsg.content}">
+            内容...
+        </div>
+    </div>
+
+    <!-- 回复区 -->
+    <!-- #lists.size() 是 Thymeleaf 工具类方法 -->
+    <h3 style="text-align: left; border-bottom: 2px solid #eee; padding-bottom: 10px;"
+        th:text="'共 ' + ${#lists.size(replies)} + ' 条回复'">
+        共 0 条回复
+    </h3>
+
+    <div class="reply-card" th:each="reply : ${replies}">
+        <div class="meta-info">
+            <b th:text="${reply.sender.username}">回复人</b> 回复于 <span th:text="${reply.datetime}">时间</span>
+        </div>
+        <div style="white-space: pre-wrap; margin-top: 5px;" th:text="${reply.content}">回复内容</div>
+    </div>
+
+    <!-- 回复表单 -->
+    <div style="margin-top: 40px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+        <h4>发表回复</h4>
+        <form th:action="@{/forum/reply}" method="post">
+            <input type="hidden" name="threadId" th:value="${mainMsg.id}">
+            <textarea name="content" rows="4" placeholder="请输入您的看法..." required></textarea>
+            <input type="submit" value="提交回复" style="margin-top: 10px; width: auto;">
+        </form>
+    </div>
+</div>
+</body>
+</html>

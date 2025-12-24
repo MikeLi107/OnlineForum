@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登录 - 在线问答平台</title>
+    <!-- @{...} 会自动加上 ContextPath -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container" style="max-width: 400px;">
+    <h2>用户登录</h2>
+
+    <!-- th:if 用于判断，只有 error 存在时才显示 -->
+    <div class="error-msg" th:if="${error}" th:text="${error}">错误信息占位符</div>
+
+    <!-- th:action 处理表单提交地址 -->
+    <form th:action="@{/login}" method="post">
+        <label>用户名</label>
+        <input type="text" name="username" placeholder="请输入用户名 (admin)" required>
+
+        <label>密码</label>
+        <input type="password" name="password" placeholder="请输入密码 (123)" required>
+
+        <label>验证码</label>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            <input type="text" name="captcha" style="width: 60%;" placeholder="输入右侧数字" required>
+            <!-- 图片验证码 src -->
+            <img th:src="@{/captcha}"
+                 onclick="this.src='/captcha?'+Math.random()"
+                 style="cursor:pointer; height: 40px; border: 1px solid #ccc;"
+                 title="点击刷新"/>
+        </div>
+
+        <input type="submit" value="立即登录">
+    </form>
+</div>
+</body>
+</html>

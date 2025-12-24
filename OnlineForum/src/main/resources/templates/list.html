@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>讨论区</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>📝 讨论列表</h2>
+        <div>
+            <!-- session 对象可以直接访问 -->
+            <span th:text="'👤 ' + ${session.currentUser.username}">👤 用户名</span>
+            <a th:href="@{/logout}" style="color: red;">退出</a>
+        </div>
+    </div>
+
+    <div style="margin: 20px 0;">
+        <a th:href="@{/forum/post}" class="btn" style="width: auto; display: inline-block;">+ 发布新话题</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th width="50%">话题标题</th>
+            <th>作者</th>
+            <th>发布时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- th:each 遍历 threads 列表，变量名为 msg -->
+        <tr th:each="msg : ${threads}">
+            <td>
+                <!-- URL 参数传递：@{/path(param=value)} -->
+                <a th:href="@{/forum/detail(id=${msg.id})}"
+                   style="font-weight: bold;"
+                   th:text="${msg.title}">标题占位符</a>
+            </td>
+            <td th:text="${msg.sender.username}">作者</td>
+            <td style="color: #666; font-size: 0.9em;" th:text="${msg.datetime}">时间</td>
+            <td><a th:href="@{/forum/detail(id=${msg.id})}">查看回复</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
